@@ -40,7 +40,7 @@ function ExpenseForm({ onAdd }: Props) {
         onChange={(e) => setCategory(e.target.value)}
       />
       <button
-        className="flex-l mr-2 mb-2 bg-blue-500 hover: bg-blue-700 text-white px-4 py-2 rounded"
+        className="flex-l mr-2 mb-2 bg-sky-500 bg-opacity-50 hover:bg-opacity-100 text-white px-4 py-2 rounded"
         onClick={handleSubmit}
       >
         Add Expense

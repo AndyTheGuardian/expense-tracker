@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseChart from "./components/ExpenseChart";
+import Stats from "./components/Stats";
 
 type Expense = {
   id: number;
@@ -36,8 +37,6 @@ function App() {
     setExpenses(expenses.filter((e) => e.id !== id));
   };
 
-  const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
-
   const filteredExpenses = expenses.filter((expense) => {
     if (filter === "all") return true;
     return expense.category === filter;
@@ -46,32 +45,13 @@ function App() {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-950">
       {/* Sidebar */}
       <div className="p-4 ml-4 text-black dark:text-white flex gap-x-2 ">
-        <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+        <h1 className="text-2xl font-bold">Dashboard</h1>
         <p className="mt-2">Expenses</p>
         <p className="mt-2">Overview</p>
       </div>
 
       {/* Main Content */}
-      <div className="grid grid-cols-4 gap-3 text-black dark:text-white mx-6">
-        <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
-          <p>Total Expenses</p>
-          <h2 className="text-xl font-bold">€{total}</h2>
-        </div>
-        <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
-          <p>Number of Items</p>
-          <h2 className="text-xl font-bold">{expenses.length}</h2>
-        </div>
-        <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
-          <p>Average</p>
-          <h2 className="text-xl font-bold">
-            €{expenses.length ? Math.round(total / expenses.length) : 0}
-          </h2>
-        </div>
-        <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
-          <p>Chart</p>
-          <ExpenseChart expenses={expenses} />
-        </div>
-      </div>
+      <Stats expenses={expenses} />
       <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-6 text-black dark:text-white">
         <div className="max-w-xxl mx-auto bg-gray-200 dark:bg-gray-900 p-6 rounded-l shadow">
           <div>
@@ -83,7 +63,7 @@ function App() {
                 className={
                   filter === "all"
                     ? "font-bold px-3 py-1 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded"
-                    : "px-3 py-1 text-gray-500 bg-gray-100 dark:bg-gray-800 rounded"
+                    : "hover:bg-gray-200 hover:dark:bg-gray-700 px-3 py-1 text-gray-500 bg-gray-100 dark:bg-gray-800 rounded"
                 }
                 onClick={() => setFilter("all")}
               >
@@ -93,7 +73,7 @@ function App() {
                 className={
                   filter === "Food"
                     ? "font-bold px-3 py-1 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded"
-                    : "px-3 py-1 text-gray-500 bg-gray-100 dark:bg-gray-800 rounded"
+                    : "hover:bg-gray-200 hover:dark:bg-gray-700 px-3 py-1 text-gray-500 bg-gray-100 dark:bg-gray-800 rounded"
                 }
                 onClick={() => setFilter("Food")}
               >
@@ -103,7 +83,7 @@ function App() {
                 className={
                   filter === "Rent"
                     ? "font-bold px-3 py-1 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded"
-                    : "px-3 py-1 text-gray-500 bg-gray-100 dark:bg-gray-800 rounded"
+                    : "hover:bg-gray-200 hover:dark:bg-gray-700 px-3 py-1 text-gray-500 bg-gray-100 dark:bg-gray-800 rounded"
                 }
                 onClick={() => setFilter("Rent")}
               >
@@ -113,7 +93,7 @@ function App() {
                 className={
                   filter === "Other"
                     ? "font-bold px-3 py-1 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 rounded"
-                    : "px-3 py-1 text-gray-500 bg-gray-100 dark:bg-gray-800 rounded"
+                    : "hover:bg-gray-200 hover:dark:bg-gray-700 px-3 py-1 text-gray-500 bg-gray-100 dark:bg-gray-800 rounded"
                 }
                 onClick={() => setFilter("Other")}
               >
@@ -121,8 +101,21 @@ function App() {
               </button>
             </div>
             <ExpenseForm onAdd={addExpense} />
-            <ExpenseList expenses={filteredExpenses} onDelete={deleteExpense} />
-            <h2 className="text-lg font-semibold mt-4">Total: €{total}</h2>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
+                <p className="text-gray-500 text-sm">Expenses by Category</p>
+                <ExpenseChart expenses={expenses} />
+              </div>
+              <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
+                <h2 className="text-gray-500 font-semibold mb-2">
+                  Recent Expenses
+                </h2>
+                <ExpenseList
+                  expenses={filteredExpenses}
+                  onDelete={deleteExpense}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

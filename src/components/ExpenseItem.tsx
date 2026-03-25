@@ -12,7 +12,7 @@ type Props = {
 
 function ExpenseItem({ expense, onDelete }: Props) {
   return (
-    <div className="flex justify-between items-center bg-gray-50 dark:bg-gray-950 p-2 rounded my-1">
+    <div className="flex justify-between items-center bg-gray-50 dark:bg-gray-950 p-2 rounded my-2">
       <p>
         {expense.name} - €{expense.amount} ({expense.category})
       </p>
