@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
+import ExpenseChart from "./components/ExpenseChart";
 
 type Expense = {
   id: number;
@@ -51,7 +52,7 @@ function App() {
       </div>
 
       {/* Main Content */}
-      <div className="grid grid-cols-3 gap-3 text-black dark:text-white mx-6">
+      <div className="grid grid-cols-4 gap-3 text-black dark:text-white mx-6">
         <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
           <p>Total Expenses</p>
           <h2 className="text-xl font-bold">€{total}</h2>
@@ -65,6 +66,10 @@ function App() {
           <h2 className="text-xl font-bold">
             €{expenses.length ? Math.round(total / expenses.length) : 0}
           </h2>
+        </div>
+        <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
+          <p>Chart</p>
+          <ExpenseChart expenses={expenses} />
         </div>
       </div>
       <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-6 text-black dark:text-white">
