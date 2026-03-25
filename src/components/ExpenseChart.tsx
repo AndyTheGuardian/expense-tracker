@@ -33,15 +33,24 @@ function ExpenseChart({ expenses }: Props) {
         .filter((e) => e.category === "Other")
         .reduce((sum, e) => sum + e.amount, 0),
     },
-  ];
+  ].filter((d) => d.value > 0);
 
   return (
-    <PieChart width={300} height={180}>
-      <Pie data={data} dataKey="value" nameKey="name" outerRadius={70}>
+    <PieChart width={300} height={250}>
+      <Pie
+        data={data}
+        dataKey="value"
+        nameKey="name"
+        cx="50%"
+        cy="50%"
+        outerRadius={70}
+        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+      >
         {data.map((_, index) => (
-          <Cell key={index} name="name" fill={colors[index % colors.length]} />
+          <Cell key={index} fill={colors[index % colors.length]} />
         ))}
       </Pie>
+      <Tooltip formatter={(value) => `€${value}`} />
       <Legend />
     </PieChart>
   );
