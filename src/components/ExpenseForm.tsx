@@ -19,28 +19,28 @@ function ExpenseForm({ onAdd }: Props) {
   return (
     <div>
       <input
-        className="flex-r border border-gray-300 dark:bg-gray-800 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 mr-2"
+        className="flex-r mr-2 mb-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 rounded p-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
         type="text"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
       <input
-        className="flex-1 border border-gray-300 dark:bg-slate-800 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 mr-2"
+        className="flex-1 mr-2 mb-2 border border-gray-300 dark:border-gray-700 dark:bg-slate-800 rounded p-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
         type="number"
         placeholder="Amount"
         value={amount}
         onChange={(e) => setAmount(Number(e.target.value))}
       />
       <input
-        className="flex-l border border-gray-300 dark:bg-gray-800 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 mr-2"
+        className="flex-l mr-2 mb-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 rounded p-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
         type="text"
         placeholder="Category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       />
       <button
-        className="bg-blue-500 hover: bg-blue-600 text-white px-4 py-2 rounded-lg"
+        className="flex-l mr-2 mb-2 bg-blue-500 hover: bg-blue-700 text-white px-4 py-2 rounded"
         onClick={handleSubmit}
       >
         Add Expense
