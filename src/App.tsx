@@ -37,6 +37,21 @@ function App() {
     setExpenses(expenses.filter((e) => e.id !== id));
   };
 
+  const editExpense = (
+    id: number,
+    name: string,
+    amount: number,
+    category: string,
+  ) => {
+    setExpenses(
+      expenses.map((ex) =>
+        ex.id === id
+          ? { ...ex, name: name, amount: amount, category: category }
+          : ex,
+      ),
+    );
+  };
+
   const filteredExpenses = expenses.filter((expense) => {
     if (filter === "all") return true;
     return expense.category === filter;
@@ -112,6 +127,7 @@ function App() {
                 </h2>
                 <ExpenseList
                   expenses={filteredExpenses}
+                  onEdit={editExpense}
                   onDelete={deleteExpense}
                 />
               </div>

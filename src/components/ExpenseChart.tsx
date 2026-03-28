@@ -36,8 +36,9 @@ function ExpenseChart({ expenses }: Props) {
   ].filter((d) => d.value > 0);
 
   return (
-    <PieChart width={300} height={250}>
+    <PieChart width={400} height={280}>
       <Pie
+        stroke="none"
         data={data}
         dataKey="value"
         nameKey="name"
