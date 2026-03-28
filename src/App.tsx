@@ -64,9 +64,9 @@ function App() {
         <p className="mt-2">Expenses</p>
         <p className="mt-2">Overview</p>
       </div>
+      <Stats expenses={expenses} />
 
       {/* Main Content */}
-      <Stats expenses={expenses} />
       <div className="min-h-screen bg-gray-100 dark:bg-gray-950 p-6 text-black dark:text-white">
         <div className="max-w-xxl mx-auto bg-gray-200 dark:bg-gray-900 p-6 rounded-l shadow">
           <div>
