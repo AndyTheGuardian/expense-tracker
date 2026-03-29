@@ -36,7 +36,7 @@ function ExpenseChart({ expenses }: Props) {
   ].filter((d) => d.value > 0);
 
   return (
-    <PieChart width={400} height={280}>
+    <PieChart>
       <Pie
         stroke="none"
         data={data}
@@ -44,7 +44,6 @@ function ExpenseChart({ expenses }: Props) {
         nameKey="name"
         cx="50%"
         cy="50%"
-        outerRadius={70}
         label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
       >
         {data.map((_, index) => (
@@ -52,7 +51,6 @@ function ExpenseChart({ expenses }: Props) {
         ))}
       </Pie>
       <Tooltip formatter={(value) => `€${value}`} />
-      <Legend />
     </PieChart>
   );
 }

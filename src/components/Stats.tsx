@@ -1,3 +1,5 @@
+import ExpenseChart from "./ExpenseChart";
+
 type Expense = {
   id: number;
   name: string;
@@ -21,8 +23,8 @@ function Stats({ expenses }: Props) {
     .filter((exp) => exp.category === "Other")
     .reduce((sum, expense) => sum + expense.amount, 0);
   return (
-    <div className="grid grid-rows-2 gap-3">
-      <div className="grid grid-cols-3 grid-rows-1 gap-3 text-black dark:text-white mx-6">
+    <div>
+      <div className="grid md:grid-cols-4 sd:grid-cols-2 gap-3 text-black dark:text-white mx-6">
         <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
           <p className="text-gray-500 text-sm">Total Expenses</p>
           <h2 className="text-xl font-bold">€{total}</h2>
@@ -37,8 +39,10 @@ function Stats({ expenses }: Props) {
             €{expenses.length ? Math.round(total / expenses.length) : 0}
           </h2>
         </div>
-      </div>
-      <div className="grid grid-cols-3 grid-rows-2 gap-3 text-black dark:text-white mx-6">
+        <div className="row-span-2 bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
+          <p className="text-gray-500 text-sm mb-3">Expenses by Category</p>
+          <ExpenseChart expenses={expenses} />
+        </div>
         <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
           <p className="text-gray-500 text-sm">
             Total Food ({expenses.filter((e) => e.category === "Food").length})
