@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
+import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
 type Expense = {
   id: number;
@@ -44,6 +44,7 @@ function ExpenseChart({ expenses }: Props) {
         nameKey="name"
         cx="50%"
         cy="50%"
+        fontSize={10}
         label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
       >
         {data.map((_, index) => (
