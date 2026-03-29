@@ -24,7 +24,7 @@ function Stats({ expenses }: Props) {
     .reduce((sum, expense) => sum + expense.amount, 0);
   return (
     <div>
-      <div className="grid md:grid-cols-4 sd:grid-cols-2 gap-3 text-black dark:text-white mx-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 sd:grid-cols-1 gap-3 text-black dark:text-white mx-6">
         <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
           <p className="text-gray-500 text-sm">Total Expenses</p>
           <h2 className="text-xl font-bold">€{total}</h2>

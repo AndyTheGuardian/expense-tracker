@@ -57,7 +57,7 @@ function App() {
     return expense.category === filter;
   });
   return (
-    <div className="bg-gray-100 dark:bg-gray-950">
+    <div className="min-h-screen max-w-xxl bg-gray-100 dark:bg-gray-950">
       {/* Sidebar */}
       <div className="p-4 ml-4 text-black dark:text-white flex gap-x-2 ">
         <h1 className="text-2xl font-bold">Dashboard</h1>
@@ -68,7 +68,7 @@ function App() {
 
       {/* Main Content */}
       <div className="bg-gray-100 dark:bg-gray-950 p-6 text-black dark:text-white">
-        <div className="mx-auto bg-gray-200 dark:bg-gray-900 p-6 rounded shadow">
+        <div className="bg-gray-200 dark:bg-gray-900 p-4 rounded shadow">
           <div>
             {/* <h1 className="text-2xl font-bold mb-4 text-center">
               Expense Tracker

@@ -29,28 +29,28 @@ function ExpenseItem({ expense, onEdit, onDelete }: Props) {
       {isEditing ? (
         <div className="flex">
           <input
-            className="w-36 h-10 flex-l mr-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 rounded p-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
+            className="w-3/6 h-10 flex-l mr-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 rounded p-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
             type="text"
             placeholder="Name"
             value={editName}
             onChange={(e) => setEditName(e.target.value)}
           />
           <input
-            className="w-20 h-10 flex-1 mr-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 rounded p-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
+            className="w-1/6 h-10 flex-l mr-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 rounded p-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
             type="number"
             placeholder="Amount"
             value={editAmount}
             onChange={(e) => setEditAmount(Number(e.target.value))}
           />
           <input
-            className="w-24 h-10 flex-l mr-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 rounded p-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
+            className="w-1/6 h-10 flex-l mr-2 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 rounded p-2 focus:outline-none focus:ring-1 focus:ring-blue-400"
             type="text"
             placeholder="Category"
             value={editCategory}
             onChange={(e) => setEditCategory(e.target.value)}
           />
           <button
-            className="h-10 flex-r bg-sky-500 bg-opacity-50 hover:bg-opacity-100 text-white px-4 py-2 rounded"
+            className="w-1/6 h-10 flex-r bg-sky-500 bg-opacity-50 hover:bg-opacity-100 text-white px-4 py-2 rounded"
             onClick={handleSubmit}
           >
             Save
